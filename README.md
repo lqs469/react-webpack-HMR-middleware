@@ -5,7 +5,7 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
 在加入中,有很多注意:
 - wenpack中文件入口,第一个是webpack_hmr,另一个就是js文件入口,基本是上面规范写法就可以;
 
-  ``` JAVASCRIPTS
+  ``` JAVASCRIPT
     entry: [
       'webpack-hot-middleware/client?path=/__webpack_hmr',
       './client/entry.js'
@@ -14,7 +14,7 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
 
 - 在入口处要添加下面的一段,以实现热加载:
 
-  ``` JAVASCRIPTS
+  ``` JAVASCRIPT
     if (module.hot) {
       module.hot.accept()
     }
@@ -22,7 +22,7 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
 
 - 下面path就是hmr会生成的位置,以及相应的文件名;
 
-  ``` JAVASCRIPTS
+  ``` JAVASCRIPT
     output: {
       path: path.join(__dirname, 'public'),
       publicPath: '/',
@@ -34,7 +34,7 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
   例如: `<script src='bundle.js'></script>`
 - `webpack.config`文件中需要加入以下几个插件,其中官方文档表示第一个插件是webpack 1.0 使用的.
 
-  ``` JAVASCRIPTS
+  ``` JAVASCRIPT
     plugins: [
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.HotModuleReplacementPlugin(),
@@ -44,7 +44,7 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
 
 - 在webpack.config中加入这个工具,
 
-  ``` JAVASCRIPTS
+  ``` JAVASCRIPT
     devtool: '#source-map',
   ```
 
@@ -52,7 +52,7 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
 - server部分操作:
   1. 第一步当然需要申明:
 
-    ``` JAVASCRIPTS
+    ``` JAVASCRIPT
       var webpackConfig = require('./webpack.config') // *
       var webpackDevMiddleware = require('webpack-dev-middleware')
       var webpackHotMiddleware = require('webpack-hot-middleware')
@@ -60,7 +60,7 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
 
   2. DevMiddlemare部分:
 
-    ``` JAVASCRIPTS
+    ``` JAVASCRIPT
       const compiler = webpack(webpackConfig)
       const publicPath = webpackConfig.output.publicPath
       app.use(webpackDevMiddleware(compiler, {
@@ -78,7 +78,7 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
     配置中具体的参数可以[查看官方文档](https://github.com/webpack/webpack-dev-middleware)
   3. HotMiddleware部分
 
-    ``` JAVASCRIPTS
+    ``` JAVASCRIPT
       app.use(webpackHotMiddleware(compiler, {
         log: console.log,
         path: '/__webpack_hmr',
@@ -88,6 +88,6 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
 
     或着什么都不用写入,直接
 
-    ``` JAVASCRIPTS
+    ``` JAVASCRIPT
       app.use(webpackHotMiddleware(compiler))
     ```
