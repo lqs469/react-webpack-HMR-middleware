@@ -8,7 +8,7 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
   ``` JAVASCRIPT
     entry: [
       'webpack-hot-middleware/client?path=/__webpack_hmr',
-      './client/entry.js'
+      './index.js'
     ],
   ```
 
