@@ -3,7 +3,7 @@
 _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https://github.com/ahfarmer/webpack-hmr-3-ways)_
 
 在加入中,有很多注意:
-- wenpack中文件入口,第一个是webpack_hmr,另一个就是js文件入口,基本是上面规范写法就可以;
+- webpack中文件入口,第一个是webpack_hmr,另一个就是js文件入口,基本是上面规范写法就可以;
 
   ``` JAVASCRIPTS
     entry: [
