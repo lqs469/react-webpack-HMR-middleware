@@ -1,6 +1,21 @@
 # react-webpack-HMR-middleware
 
-_HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https://github.com/ahfarmer/webpack-hmr-3-ways)_
+有三种方式实现热加载:
+- 使用 [webpack-dev-server CLI](https://github.com/ahfarmer/webpack-hmr-3-ways/tree/master/server-cli)
+- 使用 [webpack-dev-server API](https://github.com/ahfarmer/webpack-hmr-3-ways/tree/master/server-api)
+- 使用中间件 [webpack-hot-middleware](https://github.com/ahfarmer/webpack-hmr-3-ways/tree/master/middleware)
+
+关于怎么选择合适的方式, 这有一些简单的解释.
+- 尽可能的简化安装, 选择 webpack-dev-server CLI.
+- 如果想要使用a task runner类似于grunt 或 gulp, 选择 webpack-dev-server API.
+- 如果想要使用你自己的node脚本来运行webpack, 选择 webpack-dev-server API.
+- 已经使用express或别的框架了, 选择 webpack-hot-middleware.
+
+前两种方法的配置都较简单.
+- 第一种方法[举个栗子](https://github.com/ahfarmer/webpack-hmr-3-ways/blob/master/server-cli/package.json).
+- 第二种是webpack自带的热加载功能, 详细操作[举个栗子](https://github.com/ahfarmer/webpack-hmr-3-ways/blob/master/server-api/webpack.config.js).
+
+下面介绍一下第三种使用的热加载方式, 使用中间件：webpack-dev-middleware & webpack-hot-middleware. HMR的引入颇费周折.
 
 在加入中,有很多注意:
 - webpack中文件入口,第一个是webpack_hmr,另一个就是js文件入口,基本是上面规范写法就可以;
@@ -91,3 +106,5 @@ _HMR的引入颇费周折,*一个有价值的参考 [webpack-hmr-3-ways](https:/
     ``` JAVASCRIPT
       app.use(webpackHotMiddleware(compiler))
     ```
+
+大致上操作就是这些, 最后推荐一个github上很有价值的参考[webpack-hmr-3-ways](https://github.com/ahfarmer/webpack-hmr-3-ways)_
