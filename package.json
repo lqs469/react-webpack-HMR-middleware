@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "liqinshuo",
   "keywords": [
@@ -27,6 +29,8 @@
     "react-dom": "^0.14.8",
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.4.1"
-  }
+    "webpack-hot-middleware": "^2.4.1",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
